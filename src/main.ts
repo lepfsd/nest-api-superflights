@@ -14,6 +14,7 @@ async function bootstrap() {
     .setTitle('superflight API')
     .setDescription('a awesome API')
     .setVersion('1.0.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('/api/docs', app, document, {
@@ -21,6 +22,7 @@ async function bootstrap() {
       filter: true,
     },
   });
+  console.log(process.env.PORT);
   await app.listen(process.env.PORT || 4000);
 }
 bootstrap();
